@@ -1,6 +1,6 @@
 {
   "name": "ipc1",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "description": "",
   "author": "soo",
   "main": "main.js",
@@ -9,16 +9,24 @@
     "start": "electron .",
     "app:dist": "electron-builder",
     "dist:windows": "electron-builder --win",
-
     "build:macos": "electron-builder --macos --dir",
     "build:windows": "electron-builder --win --dir",
-
     "deploy:win32": "electron-builder --win --ia32",
-    "deploy:win64": "electron-builder --win --x64"
+    "deploy:win64": "electron-builder --win --x64",
+    "release": "electron-builder --win --publish always"
   },
   "win": {
     "target": [
       "nsis"
+    ]
+  },
+  "build": {
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "sj-eo",
+        "repo": "ipc1"
+      }
     ]
   },
   "nsis": {
@@ -30,6 +38,7 @@
   "license": "ISC",
   "devDependencies": {
     "electron": "^17.1.2",
-    "electron-builder": "^22.14.13"
+    "electron-builder": "^22.14.13",
+    "electron-updater": "^4.6.5"
   }
 }
